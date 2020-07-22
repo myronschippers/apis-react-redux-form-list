@@ -27,16 +27,32 @@ class CreatureForm extends Component {
     })
   }
 
-  handleChangeName = (event) => {
-    this.setState({
-      enteredName: event.target.value
-    })
-  }
+  // handleChangeName = (event) => {
+  //   this.setState({
+  //     enteredName: event.target.value
+  //   })
+  // }
 
-  handleChangeOrigin = (event) => {
-    this.setState({
-      enteredOrigin: event.target.value
-    })
+  // handleChangeOrigin = (event) => {
+  //   this.setState({
+  //     enteredOrigin: event.target.value
+  //   })
+  // }
+
+  // handleAllChange = (event, fieldKey) => {
+  //   this.setState({
+  //     [fieldKey]: event.target.value
+  //   })
+  // }
+
+  handleAllChange = (fieldKey) => {
+    console.log('fieldKey', fieldKey);
+    return (event) => {
+      console.log('value:', event.target.value);
+      this.setState({
+        [fieldKey]: event.target.value
+      })
+    }
   }
 
   render() {
@@ -48,14 +64,14 @@ class CreatureForm extends Component {
             className="field"
             type="text"
             placeholder="Creature Name"
-            onChange={this.handleChangeName}
+            onChange={this.handleAllChange('enteredName')}
             value={this.state.enteredName}
           />
           <input
             className="field"
             type="text"
             placeholder="Creature Origin"
-            onChange={this.handleChangeOrigin}
+            onChange={this.handleAllChange('enteredOrigin')}
             value={this.state.enteredOrigin}
           />
           <button
