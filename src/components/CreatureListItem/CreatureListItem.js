@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class CreatureListItem extends Component {
   handleClickDelete = () => {
-    this.props.deleteCallback(this.props.index);
+    // this.props.deleteCallback(this.props.index);
+    this.props.dispatch({
+      type: 'DELETE_CREATURE_FROM_LIST',
+      payload: this.props.index,
+    });
   }
 
   render() {
@@ -29,4 +34,4 @@ class CreatureListItem extends Component {
   }
 }
 
-export default CreatureListItem;
+export default connect()(CreatureListItem);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CreatureListItem from '../CreatureListItem/CreatureListItem';
 
 class CreatureList extends Component {
@@ -7,13 +8,12 @@ class CreatureList extends Component {
       <div className="stackBlock">
         <h2>Available Creatures</h2>
         <ul className="blocks">
-          {this.props.list.map((item, index) => {
+          {this.props.store.creatureListReducer.map((item, index) => {
             return (
               <li key={index}>
                 <CreatureListItem
                   creature={item}
                   index={index}
-                  deleteCallback={this.props.deleteCallback}
                 />
               </li>
             );
@@ -24,4 +24,9 @@ class CreatureList extends Component {
   }
 }
 
-export default CreatureList;
+const putStoreOnProps = (store) => {
+  return {
+    store: store,
+  };
+};
+export default connect(putStoreOnProps)(CreatureList);

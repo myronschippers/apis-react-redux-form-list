@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class CreatureForm extends Component {
   state = {
@@ -7,9 +8,17 @@ class CreatureForm extends Component {
   }
 
   handleClickAdd = () => {
-    this.props.addCreature({
-      name: this.state.enteredName,
-      origin: this.state.enteredOrigin,
+    // this.props.addCreature({
+    //   name: this.state.enteredName,
+    //   origin: this.state.enteredOrigin,
+    // });
+    // dispatch to redux
+    this.props.dispatch({
+      type: 'ADD_TO_CREATURE_LIST',
+      payload: {
+        name: this.state.enteredName,
+        origin: this.state.enteredOrigin,
+      },
     });
 
     this.setState({
@@ -61,4 +70,4 @@ class CreatureForm extends Component {
   }
 }
 
-export default CreatureForm;
+export default connect()(CreatureForm);

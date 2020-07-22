@@ -8,48 +8,45 @@ import CreatureList from '../CreatureList/CreatureList';
 import CreatureForm from '../CreatureForm/CreatureForm';
 
 class App extends React.Component {
-  state = {
-    creatureList: [
-      {
-        name: 'Dragon',
-        origin: 'China',
-      },
-      {
-        name: 'Kitsune',
-        origin: 'Japan',
-      },
-    ],
-  }
+  // state = {
+  //   creatureList: [
+  //     {
+  //       name: 'Dragon',
+  //       origin: 'China',
+  //     },
+  //     {
+  //       name: 'Kitsune',
+  //       origin: 'Japan',
+  //     },
+  //   ],
+  // }
 
-  addCreature = (newCreature) => {
-    this.setState({
-      creatureList: [
-        ...this.state.creatureList,
-        newCreature,
-      ],
-    })
-  }
+  // addCreature = (newCreature) => {
+  //   this.setState({
+  //     creatureList: [
+  //       ...this.state.creatureList,
+  //       newCreature,
+  //     ],
+  //   })
+  // }
 
-  deleteCreature = (creatureIndex) => {
-    const listWithoutCreature = this.state.creatureList.filter((item, index) => {
-      return creatureIndex !== index;
-    });
+  // deleteCreature = (creatureIndex) => {
+  //   const listWithoutCreature = this.state.creatureList.filter((item, index) => {
+  //     return creatureIndex !== index;
+  //   });
 
-    this.setState({
-      creatureList: listWithoutCreature,
-    });
-  }
+  //   this.setState({
+  //     creatureList: listWithoutCreature,
+  //   });
+  // }
 
   render() {
     // toggle things
     return (
       <AppLayout>
         {/* ADDITIONAL CONTENT */}
-        <CreatureForm addCreature={this.addCreature} />
-        <CreatureList
-          list={this.state.creatureList}
-          deleteCallback={this.deleteCreature}
-        />
+        <CreatureForm />
+        <CreatureList />
       </AppLayout>
     );
   }
