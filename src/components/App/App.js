@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 // CUSTOM COMPONENTS
 import AppLayout from '../AppLayout/AppLayout';
-import CreatureList from '../CreatureList/CreatureList';
-import CreatureForm from '../CreatureForm/CreatureForm';
+import ManageInventoryPage from '../ManageInventoryPage/ManageInventoryPage';
+import InventoryPage from '../InventoryPage/InventoryPage';
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 class App extends React.Component {
   // state = {
@@ -43,11 +45,14 @@ class App extends React.Component {
   render() {
     // toggle things
     return (
-      <AppLayout>
-        {/* ADDITIONAL CONTENT */}
-        <CreatureForm />
-        <CreatureList />
-      </AppLayout>
+      <Router>
+        <AppLayout>
+          {/* ADDITIONAL CONTENT */}
+          <Route exact path="/manage-inventory" component={ManageInventoryPage} />
+          <Route exact path="/" component={InventoryPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
+        </AppLayout>
+      </Router>
     );
   }
 }

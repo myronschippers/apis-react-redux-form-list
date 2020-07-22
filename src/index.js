@@ -33,10 +33,21 @@ function creatureListReducer(state = defaultCreatures, action) {
   return state;
 }
 
+function checkoutReducer(state = [], action) {
+  if (action.type === 'ADD_TO_CHECKOUT') {
+    return [
+      ...state,
+      action.payload
+    ];
+  }
+  return state;
+}
+
 const storeInstance = createStore(
   combineReducers({
     // add any reducers here
     creatureListReducer,
+    checkoutReducer,
   }),
   // TODO - add middleware for logger
   applyMiddleware(logger)
