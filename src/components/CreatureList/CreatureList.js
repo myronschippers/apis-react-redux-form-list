@@ -14,6 +14,7 @@ class CreatureList extends Component {
                 <CreatureListItem
                   creature={item}
                   index={index}
+                  {...this.props}
                 />
               </li>
             );

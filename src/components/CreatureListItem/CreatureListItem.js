@@ -10,6 +10,14 @@ class CreatureListItem extends Component {
     });
   }
 
+  handleClickAddCart = () => {
+    // this.props.deleteCallback(this.props.index);
+    this.props.dispatch({
+      type: 'ADD_TO_CHECKOUT',
+      payload: this.props.creature,
+    });
+  }
+
   render() {
     const {
       creature,
@@ -22,12 +30,18 @@ class CreatureListItem extends Component {
             <p className="cardSubHdg">Origin: {creature.origin}</p>
           </div>
           <div className="card-action">
-            <button
+            {this.props.manage && <button
               className="btn"
               onClick={this.handleClickDelete}
             >
               DELETE
-            </button>
+            </button>}
+            {!this.props.manage && <button
+              className="btn"
+              onClick={this.handleClickAddCart}
+            >
+              ADD TO CART
+            </button>}
           </div>
       </div>
     );

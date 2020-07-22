@@ -9,7 +9,7 @@ class ManageInventoryPage extends Component {
     return (
       <div>
         <CreatureForm />
-        <CreatureList />
+        <CreatureList manage />
       </div>
     );
   }
