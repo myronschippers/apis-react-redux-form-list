@@ -39,6 +39,8 @@ function checkoutReducer(state = [], action) {
       ...state,
       action.payload
     ];
+  } else if (action.type === 'CLEAR_CART') {
+    return [];
   }
   return state;
 }
